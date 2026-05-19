@@ -90,25 +90,26 @@ const setCustomFont = async () => {
 }
 </script>
 
-<style lang="stylus" scoped>
-.font-wrapper
-  margin 40px 0
-
-  .preview
-    padding 50px
-    border 2px solid rgba(0, 0, 0, 0.2)
-    border-radius 10px
-    text-align center
-    font-size 100px
-    user-select none
-
-  .font
-    margin-top 20px
-    text-align center
-    font-weight bold
-    font-size 46px
-    user-select none
-
-.btn
-  width 500px
+<style scoped>
+.font-wrapper {
+  margin: 40px 0;
+}
+.font-wrapper .preview {
+  padding: 50px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 100px;
+  user-select: none;
+}
+.font-wrapper .font {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 46px;
+  user-select: none;
+}
+.btn {
+  width: 500px;
+}
 </style>

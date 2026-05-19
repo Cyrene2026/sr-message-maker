@@ -138,91 +138,89 @@ const handleAutoPlayClick = () => {
 }
 </script>
 
-<style lang="stylus" scoped>
-$pos = 190px
-$btn-height = 255px
+<style scoped>
+.menu {
+  position: absolute;
+  top: 190px;
+  left: 190px;
+  width: 765px;
+  height: calc(100% - 190px);
+}
+.menu .list {
+  overflow-x: hidden;
+  overflow-y: auto;
 
-.menu
-  position absolute
-  top $pos
-  left $pos
-  width 765px
-  height 'calc(100% - %s)' % $pos
-
-  .list
-    overflow-x hidden
-    overflow-y auto
-    overflow-y overlay
-    box-sizing border-box
-    padding-right 25px
-    width 100%
-    height 'calc(100% - %s)' % $btn-height
-    scrollbar-gutter stable
-    scrollbar-width none
-
-    &::-webkit-scrollbar-track
-      margin 15px 0 5px
-      background #3c3f46
-
-    &::-webkit-scrollbar-thumb
-      background #9ea0a4
-
-  .footer
-    display flex
-    align-items center
-    box-sizing border-box
-    margin-top 15px
-    padding-top 35px
-    width 100%
-    height 125px
-    border-top var(--menu-border)
-
-    .btn-list
-      display flex
-      align-items center
-      width 90%
-
-      .btn
-        display flex
-        flex 0 0 25%
-        align-items center
-        margin-right 20px
-        color var(--menu-text-color)
-        cursor pointer
-        user-select none
-
-        &:hover
-          color var(--menu-btn-hover)
-
-          .icon
-            box-shadow var(--meni-icon-shadow)
-
-        .icon
-          position relative
-          display flex
-          flex-shrink 0
-          justify-content center
-          align-items center
-          border-radius 50%
-          background var(--menu-icon-background-color)
-
-        span
-          margin-left 20px
-          font-weight bold
-          font-size 30px
-
-    .bubbles-btn
-      display flex
-      justify-content center
-      align-items center
-      box-sizing border-box
-      width 85px
-      height 85px
-      border 5px solid #767479
-      border-radius 50%
-      background rgba(0, 0, 0, 0.5)
-      cursor pointer
-
-      &:hover
-        box-shadow 0 0 5px 0 #fff
+  box-sizing: border-box;
+  padding-right: 25px;
+  width: 100%;
+  height: calc(100% - 255px);
+  scrollbar-gutter: stable;
+  scrollbar-width: none;
+}
+.menu .list::-webkit-scrollbar-track {
+  margin: 15px 0 5px;
+  background: #3c3f46;
+}
+.menu .list::-webkit-scrollbar-thumb {
+  background: #9ea0a4;
+}
+.menu .footer {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin-top: 15px;
+  padding-top: 35px;
+  width: 100%;
+  height: 125px;
+  border-top: var(--menu-border);
+}
+.menu .footer .btn-list {
+  display: flex;
+  align-items: center;
+  width: 90%;
+}
+.menu .footer .btn-list .btn {
+  display: flex;
+  flex: 0 0 25%;
+  align-items: center;
+  margin-right: 20px;
+  color: var(--menu-text-color);
+  cursor: pointer;
+  user-select: none;
+}
+.menu .footer .btn-list .btn:hover {
+  color: var(--menu-btn-hover);
+}
+.menu .footer .btn-list .btn:hover .icon {
+  box-shadow: var(--meni-icon-shadow);
+}
+.menu .footer .btn-list .btn .icon {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--menu-icon-background-color);
+}
+.menu .footer .btn-list .btn span {
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 30px;
+}
+.menu .footer .bubbles-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 85px;
+  height: 85px;
+  border: 5px solid #767479;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.menu .footer .bubbles-btn:hover {
+  box-shadow: 0 0 5px 0 #fff;
+}
 </style>

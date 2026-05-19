@@ -55,47 +55,48 @@ const updateMessage = (e: Event) => {
 }
 </script>
 
-<style lang="stylus" scoped>
-@import './Message.styl'
-
-.notice
-  display flex
-  justify-content center
-  align-items center
-  item()
-  padding 40px 0
-  height 60px
-  color var(--notice-color)
-  font-size 30px
-
-  img
-    user-select none
-
-  span
-    overflow hidden
-    margin-left 20px
-    max-width 80%
-    text-overflow ellipsis
-    white-space nowrap
-
-  div
-    position relative
-    height 100%
-
-    .del
-      position absolute
-      right -100px
-      display flex
-      justify-content center
-      align-items center
-      width 60px
-      height 60px
-      opacity 0
-      cursor pointer
-
-      :deep(path)
-        fill var(--notice-color)
-
-      &:hover
-        opacity 1
+<style scoped>
+.notice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-right: 50px;
+  width: calc(100% - 50px);
+  padding: 40px 0;
+  height: 60px;
+  color: var(--notice-color);
+  font-size: 30px;
+}
+.notice img {
+  user-select: none;
+}
+.notice span {
+  overflow: hidden;
+  margin-left: 20px;
+  max-width: 80%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.notice div {
+  position: relative;
+  height: 100%;
+}
+.notice div .del {
+  position: absolute;
+  right: -100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  cursor: pointer;
+}
+.notice div .del :deep(path) {
+  fill: var(--notice-color);
+}
+.notice div .del:hover {
+  opacity: 1;
+}
 </style>

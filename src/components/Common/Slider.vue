@@ -94,43 +94,41 @@ const updatePercentage = (mouseX: number) => {
 }
 </script>
 
-<style lang="stylus" scoped>
-$bar-height = 12px
-
-.slider
-  display flex
-  justify-content center
-  align-items center
-  -webkit-user-drag none
-  user-drag none
-
-  .track
-    position relative
-    flex 1
-    box-sizing border-box
-    height $bar-height
-    background-color #bcc0c3
-    cursor pointer
-
-    .bar
-      position absolute
-      top 0
-      left 0
-      width 0
-      height 100%
-      background-color #f19839
-      pointer-events none
-
-    .thumb
-      position absolute
-      top 0
-      left 0
-      box-sizing border-box
-      width 45px
-      height 45px
-      border: $bar-height * 0.7 solid #f19839
-      border-radius 50%
-      background #fff
-      cursor pointer
-      transform 'translate(-50%, calc(-50% + %s / 2))' % $bar-height
+<style scoped>
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-user-drag: none;
+}
+.slider .track {
+  position: relative;
+  flex: 1;
+  box-sizing: border-box;
+  height: 12px;
+  background-color: #bcc0c3;
+  cursor: pointer;
+}
+.slider .track .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #f19839;
+  pointer-events: none;
+}
+.slider .track .thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 45px;
+  height: 45px;
+  border: 8.4px solid #f19839;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  transform: translate(-50%, calc(-50% + 12px / 2));
+}
 </style>

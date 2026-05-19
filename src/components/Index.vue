@@ -22,8 +22,9 @@ const handleDrop = (e: DragEvent) => {
 }
 </script>
 
-<style lang="stylus" scoped>
-.drop-view
-  position absolute
-  inset 0
+<style scoped>
+.drop-view {
+  position: absolute;
+  inset: 0;
+}
 </style>

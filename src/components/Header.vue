@@ -22,35 +22,36 @@
   </div>
 </template>
 
-<style lang="stylus" scoped>
-.icon
-  position absolute
-  top 45px
-  left 185px
-  display flex
-  align-items center
-  user-select none
-
-  span
-    margin 0 0 15px 20px
-    color #ddd
-    font-size 46px
-
-.img
-  position absolute
-  top 30px
-  left 30px
-  z-index -1
-  overflow hidden
-  width 650px
-  height 470px
-  opacity 0.5
-  pointer-events none
-  user-select none
-
-  img
-    position absolute
-    right 0
-    bottom 0
-    animation rotate 60s linear infinite
+<style scoped>
+.icon {
+  position: absolute;
+  top: 45px;
+  left: 185px;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+.icon span {
+  margin: 0 0 15px 20px;
+  color: #ddd;
+  font-size: 46px;
+}
+.img {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: -1;
+  overflow: hidden;
+  width: 650px;
+  height: 470px;
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+.img img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  animation: rotate 60s linear infinite;
+}
 </style>

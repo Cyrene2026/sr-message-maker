@@ -52,131 +52,128 @@ const emit = defineEmits<{
 }>()
 </script>
 
-<style lang="stylus" scoped>
-$border-color = #b9babf
-
-.preview
-  display flex
-  flex-direction column
-  justify-content center
-  align-items center
-  padding 0 60px 0 150px
-  width v-bind(width)
-  height 100%
-  user-select none
-
-  .circle
-    // 倒影
-    // -webkit-box-reflect below 5px linear-gradient(transparent, rgba(0, 0, 0, 0.1))
-    position relative
-    display flex
-    justify-content center
-    align-items center
-    width v-bind(width)
-    height v-bind(width)
-    border-radius 50%
-    background v-bind(bgColor)
-
-    img
-      width 80%
-
-    .circle-1
-    .circle-2
-    .circle-3
-      position absolute
-      bottom -5px
-      left 50%
-      border-radius 50%
-      transform translate(-50%)
-
-    .circle-1
-      width 117%
-      height 117%
-      border 3px solid $border-color
-
-    .circle-2
-      width 109%
-      height 109%
-      border 2px dotted $border-color
-
-    .circle-3
-      width 165%
-      height 165%
-      border 2px solid $border-color
-      opacity 0.5
-
-    .circle-4
-    .circle-5
-    .circle-6
-      position absolute
-      top -50%
-      left 50%
-      border-radius 50%
-      transform translate(-50%, -50%)
-
-    .circle-4
-      width 100%
-      height 100%
-      border 2px dotted $border-color
-      opacity 0.3
-
-    .circle-5
-      width 81%
-      height 81%
-      border 2px solid $border-color
-      opacity 0.4
-
-    .circle-6
-      width 65%
-      height 65%
-      border 2px solid $border-color
-      opacity 0.4
-
-    .point-1
-    .point-2
-    .point-3
-      position absolute
-      width 14px
-      height 14px
-      border-radius 50%
-      background $border-color
-      opacity 0.3
-      transform translate(-50%, -50%)
-
-    .point-1
-      top -17%
-      left 50%
-
-    .point-2
-      top -40%
-      left 50%
-
-    .point-3
-      top -15%
-      right -30%
-
-    .line
-      position absolute
-      top -50%
-      left 50%
-      width 2px
-      height 100%
-      background $border-color
-      opacity 0.3
-      transform translate(-50%, -50%)
-
-    .name
-      position absolute
-      bottom -65px
-      overflow hidden
-      max-width 600px
-      color v-bind(color)
-      text-overflow ellipsis
-      white-space nowrap
-      font-weight bold
-      font-size v-bind(fontSize)
-
-.img_circle
-  border-radius 50%
-  clip-path var(--avatar-image-clip-path-bilibiliwiki-only)
+<style scoped>
+.preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 60px 0 150px;
+  width: v-bind(width);
+  height: 100%;
+  user-select: none;
+}
+.preview .circle {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: v-bind(width);
+  height: v-bind(width);
+  border-radius: 50%;
+  background: v-bind(bgColor);
+}
+.preview .circle img {
+  width: 80%;
+}
+.preview .circle .circle-1,
+.preview .circle .circle-2,
+.preview .circle .circle-3 {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%);
+}
+.preview .circle .circle-1 {
+  width: 117%;
+  height: 117%;
+  border: 3px solid #b9babf;
+}
+.preview .circle .circle-2 {
+  width: 109%;
+  height: 109%;
+  border: 2px dotted #b9babf;
+}
+.preview .circle .circle-3 {
+  width: 165%;
+  height: 165%;
+  border: 2px solid #b9babf;
+  opacity: 0.5;
+}
+.preview .circle .circle-4,
+.preview .circle .circle-5,
+.preview .circle .circle-6 {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.preview .circle .circle-4 {
+  width: 100%;
+  height: 100%;
+  border: 2px dotted #b9babf;
+  opacity: 0.3;
+}
+.preview .circle .circle-5 {
+  width: 81%;
+  height: 81%;
+  border: 2px solid #b9babf;
+  opacity: 0.4;
+}
+.preview .circle .circle-6 {
+  width: 65%;
+  height: 65%;
+  border: 2px solid #b9babf;
+  opacity: 0.4;
+}
+.preview .circle .point-1,
+.preview .circle .point-2,
+.preview .circle .point-3 {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #b9babf;
+  opacity: 0.3;
+  transform: translate(-50%, -50%);
+}
+.preview .circle .point-1 {
+  top: -17%;
+  left: 50%;
+}
+.preview .circle .point-2 {
+  top: -40%;
+  left: 50%;
+}
+.preview .circle .point-3 {
+  top: -15%;
+  right: -30%;
+}
+.preview .circle .line {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: #b9babf;
+  opacity: 0.3;
+  transform: translate(-50%, -50%);
+}
+.preview .circle .name {
+  position: absolute;
+  bottom: -65px;
+  overflow: hidden;
+  max-width: 600px;
+  color: v-bind(color);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: v-bind(fontSize);
+}
+.img_circle {
+  border-radius: 50%;
+  clip-path: var(--avatar-image-clip-path-bilibiliwiki-only);
+}
 </style>

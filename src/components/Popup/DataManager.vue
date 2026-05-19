@@ -212,76 +212,77 @@ const reserDatabase = () => {
 }
 </script>
 
-<style lang="stylus" scoped>
-.data
-  display flex
-  flex-direction column
-  margin 40px 0 60px
-  width 1000px
-  gap 30px
-
-  .box
-    box-sizing border-box
-    border 4px solid rgba(0, 0, 0, 0.2)
-
-  .info
-    display flex
-    justify-content space-between
-    align-items center
-    box-sizing border-box
-    width 100%
-    height 100px
-    border-bottom 2px solid rgba(0, 0, 0, 0.2)
-    font-size 36px
-
-    &:last-child
-      border-bottom none
-
-    .label
-      display flex
-      flex 0 0 33.33%
-      justify-content center
-      align-items center
-      height 100%
-      border-right 2px solid rgba(0, 0, 0, 0.2)
-
-    .value
-      flex 1
-      padding 0 50px
-      color #333
-      text-align center
-
-  .btn-group
-    display flex
-    justify-content space-between
-    align-items center
-    box-sizing border-box
-    width 100%
-    height 100px
-    border 2px solid rgba(0, 0, 0, 0)
-
-    .btn
-      display flex
-      flex 0 0 calc(33.33% + 1px)
-      justify-content center
-      align-items center
-      box-sizing border-box
-      height 100%
-      border-right 2px solid rgba(0, 0, 0, 0.2)
-      color #333
-      user-select none
-
-      &:last-child
-        border-right none
-
-      &:hover
-        background #ddd
-
-.line
-  width 100%
-  height 30px
-
-.disable
-  color rgba(0, 0, 0, 0.2) !important
-  pointer-events none
+<style scoped>
+.data {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0 60px;
+  width: 1000px;
+  gap: 30px;
+}
+.data .box {
+  box-sizing: border-box;
+  border: 4px solid rgba(0, 0, 0, 0.2);
+}
+.data .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  font-size: 36px;
+}
+.data .info:last-child {
+  border-bottom: none;
+}
+.data .info .label {
+  display: flex;
+  flex: 0 0 33.33%;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
+}
+.data .info .value {
+  flex: 1;
+  padding: 0 50px;
+  color: #333;
+  text-align: center;
+}
+.data .btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100px;
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+.data .btn-group .btn {
+  display: flex;
+  flex: 0 0 calc(33.33% + 1px);
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
+  color: #333;
+  user-select: none;
+}
+.data .btn-group .btn:last-child {
+  border-right: none;
+}
+.data .btn-group .btn:hover {
+  background: #ddd;
+}
+.line {
+  width: 100%;
+  height: 30px;
+}
+.disable {
+  color: rgba(0, 0, 0, 0.2) !important;
+  pointer-events: none;
+}
 </style>

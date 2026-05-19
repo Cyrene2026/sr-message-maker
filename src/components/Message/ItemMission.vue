@@ -140,102 +140,103 @@ const updateText = (text: string) => {
 }
 </script>
 
-<style lang="stylus" scoped>
-@import './Message.styl'
-
-.mission
-  display flex
-  justify-content center
-  align-items center
-  padding 50px 0
-  item()
-
-  .bg
-    position relative
-    height 180px
-    border-top-right-radius 50px
-    background-position top left
-    background-size cover
-    background-repeat no-repeat
-
-    .icon
-      position absolute
-      top 0
-      left 35px
-      width 120px
-      height 175px
-      cursor pointer
-      user-select none
-
-    .tip
-      position absolute
-      top 10px
-      left 180px
-      height 45px
-      color #fff
-      font-size 30px
-      line-height 45px
-      cursor pointer
-      user-select none
-
-    .text
-      position absolute
-      top 55px
-      left 180px
-      overflow hidden
-      width 80%
-      height 100px
-      border none
-      background transparent
-      color #000
-      text-overflow ellipsis
-      white-space nowrap
-      font-size 45px
-      line-height 100px
-
-    .state
-      position absolute
-      right 0
-      bottom 15px
-      display flex
-      justify-content center
-      align-items center
-      width 120px
-      height 120px
-      cursor pointer
-      user-select none
-
-    .del
-      position absolute
-      top 50%
-      right -100px
-      display flex
-      justify-content center
-      align-items center
-      width 60px
-      height 60px
-      opacity 0
-      cursor pointer
-      transform translateY(-50%)
-
-      :deep(path)
-        fill var(--message-item-name-color)
-
-      &:hover
-        opacity 1
-
-.mission-0
-  color #b886ed
-
-.mission-1
-  color #54a9be
-
-.mission-2
-  color #f4b334
-
-.mission-3
-  color #b6d671
-
-.mission-4
-  color #e68321
+<style scoped>
+.mission {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  position: relative;
+  margin-right: 50px;
+  width: calc(100% - 50px);
+}
+.mission .bg {
+  position: relative;
+  height: 180px;
+  border-top-right-radius: 50px;
+  background-position: top left;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.mission .bg .icon {
+  position: absolute;
+  top: 0;
+  left: 35px;
+  width: 120px;
+  height: 175px;
+  cursor: pointer;
+  user-select: none;
+}
+.mission .bg .tip {
+  position: absolute;
+  top: 10px;
+  left: 180px;
+  height: 45px;
+  color: #fff;
+  font-size: 30px;
+  line-height: 45px;
+  cursor: pointer;
+  user-select: none;
+}
+.mission .bg .text {
+  position: absolute;
+  top: 55px;
+  left: 180px;
+  overflow: hidden;
+  width: 80%;
+  height: 100px;
+  border: none;
+  background: transparent;
+  color: #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 45px;
+  line-height: 100px;
+}
+.mission .bg .state {
+  position: absolute;
+  right: 0;
+  bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  user-select: none;
+}
+.mission .bg .del {
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+.mission .bg .del :deep(path) {
+  fill: var(--message-item-name-color);
+}
+.mission .bg .del:hover {
+  opacity: 1;
+}
+.mission-0 {
+  color: #b886ed;
+}
+.mission-1 {
+  color: #54a9be;
+}
+.mission-2 {
+  color: #f4b334;
+}
+.mission-3 {
+  color: #b6d671;
+}
+.mission-4 {
+  color: #e68321;
+}
 </style>

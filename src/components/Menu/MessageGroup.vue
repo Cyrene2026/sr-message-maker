@@ -192,160 +192,166 @@ const avatarUrl = computed(() => {
 })
 </script>
 
-<style lang="stylus" scoped>
-.message-item
-  margin-bottom 35px
-  color var(--menu-text-color)
-  user-select none
-
-  .item
-    position relative
-    display flex
-    align-items center
-    box-sizing border-box
-    width 100%
-    height 165px
-    border var(--menu-border)
-    cursor pointer
-    transition all 0.2s
-
-    &:before
-      position absolute
-      top 0
-      right 0
-      bottom 0
-      left 0
-      z-index -1
-      background url('@/assets/images/对话背景.webp')
-      background-position right
-      background-repeat no-repeat
-      content ''
-      opacity 0.15
-
-    &:after
-      position absolute
-      top 0
-      right 0
-      bottom 0
-      left 0
-      z-index -2
-      background linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) 60%, rgba(255, 255, 255, 0.1))
-      content ''
-      opacity 0.5
-
-    &:hover
-      border var(--menu-border-hover)
-
-      svg
-        margin-left 20px
-
-    .avatar
-      overflow hidden
-      margin-left 30px
-      width 115px
-      height 115px
-      border-radius 50%
-
-      img
-        width 100%
-        height 100%
-        border-radius 50%
-        border-radius 50%
-        background var(--avatar-background)
-        pointer-events none
-        user-select none
-        object-fit contain
-        clip-path var(--avatar-image-clip-path-bilibiliwiki-only)
-
-    .name
-      overflow hidden
-      margin-left 30px
-      width 480px
-      text-overflow ellipsis
-      white-space nowrap
-      font-weight bold
-      font-size 46px
-
-    svg
-      transition all 0.2s
-
-  .message-list
-    display flex
-    flex-direction column
-    align-items center
-    overflow hidden
-    max-height 0
-    transition max-height 0.2s
-
-    .message
-      position relative
-      display flex
-      align-items center
-      box-sizing border-box
-      margin 25px 10px 0
-      padding 30px 35px 30px 50px
-      width 95%
-      height 115px
-      border var(--menu-border)
-      background rgba(0, 0, 0, 0.4)
-      cursor pointer
-      transition all 0.2s
-
-      :deep(path)
-        transition all 0.2s
-
-      &:hover
-        background #bab9be
-        color var(--message-text-hover-color)
-
-        :deep(path)
-          fill var(--message-icon-hover-color)
-
-      .icon
-        display flex
-        justify-content center
-        align-items center
-        width 50px
-        height 100%
-
-      .text
-        overflow hidden
-        margin-bottom 5px
-        margin-left 35px
-        text-overflow ellipsis
-        white-space nowrap
-        word-break break-word
-        font-size 40px
-
-      .del
-        position absolute
-        right 10px
-        display flex
-        justify-content center
-        align-items center
-        width 80px
-        height 80px
-        border-radius 10px
-        background rgba(255, 255, 255, 0.1)
-        opacity 0
-        cursor pointer
-        backdrop-filter blur(10px)
-
-        &:hover
-          opacity 1
-
-.highlight
-  border var(--menu-border-hover) !important
-
-.message-list-highlight
-  max-height v-bind(height) !important
-
-.message-highlight
-  border var(--menu-border-highlight) !important
-  background #eaeaea !important
-  box-shadow var(--meni-icon-shadow)
-  color var(--message-text-hover-color) !important
-
-  :deep(path)
-    fill var(--message-icon-hover-color) !important
+<style scoped>
+.message-item {
+  margin-bottom: 35px;
+  color: var(--menu-text-color);
+  user-select: none;
+}
+.message-item .item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 165px;
+  border: var(--menu-border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.message-item .item:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: url('@/assets/images/对话背景.webp');
+  background-position: right;
+  background-repeat: no-repeat;
+  content: '';
+  opacity: 0.15;
+}
+.message-item .item:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -2;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5) 60%,
+    rgba(255, 255, 255, 0.1)
+  );
+  content: '';
+  opacity: 0.5;
+}
+.message-item .item:hover {
+  border: var(--menu-border-hover);
+}
+.message-item .item:hover svg {
+  margin-left: 20px;
+}
+.message-item .item .avatar {
+  overflow: hidden;
+  margin-left: 30px;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+}
+.message-item .item .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-radius: 50%;
+  background: var(--avatar-background);
+  pointer-events: none;
+  user-select: none;
+  object-fit: contain;
+  clip-path: var(--avatar-image-clip-path-bilibiliwiki-only);
+}
+.message-item .item .name {
+  overflow: hidden;
+  margin-left: 30px;
+  width: 480px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 46px;
+}
+.message-item .item svg {
+  transition: all 0.2s;
+}
+.message-item .message-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s;
+}
+.message-item .message-list .message {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 25px 10px 0;
+  padding: 30px 35px 30px 50px;
+  width: 95%;
+  height: 115px;
+  border: var(--menu-border);
+  background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.message-item .message-list .message :deep(path) {
+  transition: all 0.2s;
+}
+.message-item .message-list .message:hover {
+  background: #bab9be;
+  color: var(--message-text-hover-color);
+}
+.message-item .message-list .message:hover :deep(path) {
+  fill: var(--message-icon-hover-color);
+}
+.message-item .message-list .message .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 100%;
+}
+.message-item .message-list .message .text {
+  overflow: hidden;
+  margin-bottom: 5px;
+  margin-left: 35px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-word;
+  font-size: 40px;
+}
+.message-item .message-list .message .del {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+.message-item .message-list .message .del:hover {
+  opacity: 1;
+}
+.highlight {
+  border: var(--menu-border-hover) !important;
+}
+.message-list-highlight {
+  max-height: v-bind(height) !important;
+}
+.message-highlight {
+  border: var(--menu-border-highlight) !important;
+  background: #eaeaea !important;
+  box-shadow: var(--meni-icon-shadow);
+  color: var(--message-text-hover-color) !important;
+}
+.message-highlight :deep(path) {
+  fill: var(--message-icon-hover-color) !important;
+}
 </style>

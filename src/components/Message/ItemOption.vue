@@ -65,44 +65,60 @@ const updateText = (text: string) => {
 }
 </script>
 
-<style lang="stylus" scoped>
-@import './Message.styl'
-
-.option
-  position relative
-  display flex
-  justify-content center
-  align-items center
-  padding 15px 0
-  item()
-
-  .change
-  .del
-    position absolute
-    top 50%
-    display flex
-    justify-content center
-    align-items center
-    width 60px
-    height 60px
-    opacity 0
-    cursor pointer
-    transition opacity 0.2s
-    transform translateY(-50%)
-
-    :deep(path)
-      fill var(--message-item-name-color)
-
-    &:hover
-      opacity 1
-
-  .change
-    left 20px
-
-  .del
-    right 20px
-
-  input
-    option()
-    width calc(100% - var(--message-item-avatar-width) * 2 - 100px)
+<style scoped>
+.option {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  position: relative;
+  margin-right: 50px;
+  width: calc(100% - 50px);
+}
+.option .change,
+.option .del {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  transform: translateY(-50%);
+}
+.option .change :deep(path),
+.option .del :deep(path) {
+  fill: var(--message-item-name-color);
+}
+.option .change:hover,
+.option .del:hover {
+  opacity: 1;
+}
+.option .change {
+  left: 20px;
+}
+.option .del {
+  right: 20px;
+}
+.option input {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 5px 30px;
+  width: 100%;
+  height: 90px;
+  border: 2px solid var(--border-hover-color);
+  background: var(--option-background-color);
+  box-shadow: 2px 2px 10px var(--border-hover-color);
+  color: var(--text-color);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 40px;
+  width: calc(100% - var(--message-item-avatar-width) * 2 - 100px);
+}
 </style>

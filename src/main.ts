@@ -1,4 +1,4 @@
-import './main.styl'
+import './main.css'
 
 import { analytics } from 'star-rail-vue'
 import App from './App.vue'

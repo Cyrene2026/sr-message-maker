@@ -231,140 +231,148 @@ const handleDelClick = (key: string, name: string) => {
 }
 </script>
 
-<style lang="stylus" scoped>
-$top = 30px
+<style scoped>
+.character-select {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 30px 60px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  background: #000;
+  background-image: url('https://patchwiki.biligame.com/images/sr/2/29/tjd2rlq7gbac4k46mnum5fvtt1218r8.png');
+  background-position: 100% 0;
+  background-size: 103%;
+  background-repeat: no-repeat;
+}
+.character-select:before {
+  position: absolute;
+  top: 40px;
+  right: 50px;
+  bottom: 40px;
+  left: 50px;
+  border: 5px solid rgba(100, 100, 100, 0.3);
+  border-radius: 5px;
+  content: '';
+  pointer-events: none;
+}
+.character-select .close {
+  position: absolute;
+  top: 100px;
+  right: 85px;
+  z-index: 1;
+}
+.character-select .left {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 150px 30px 15px;
+  width: 300px;
+  height: calc(100% - 60px);
+}
+.character-select .left .group-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-.character-select
-  position absolute
-  top 10px
-  left 10px
-  display flex
-  overflow hidden
-  box-sizing border-box
-  padding 30px 60px
-  width calc(100% - 20px)
-  height calc(100% - 20px)
-  background #000
-  background-image url('https://patchwiki.biligame.com/images/sr/2/29/tjd2rlq7gbac4k46mnum5fvtt1218r8.png')
-  background-position 100% 0
-  background-size 103%
-  background-repeat no-repeat
+  scrollbar-gutter: stable;
+  scrollbar-width: none;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 25px,
+    #000 calc(100% - 25px),
+    transparent
+  );
+}
+.character-select .left .group-list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.character-select .right {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-  &:before
-    position absolute
-    top 40px
-    right 50px
-    bottom 40px
-    left 50px
-    border 5px solid rgba(100, 100, 100, 0.3)
-    border-radius 5px
-    content ''
-    pointer-events none
-
-  .close
-    position absolute
-    top 100px
-    right 85px
-    z-index 1
-
-  .left
-    display flex
-    flex-direction column
-    margin $top 150px $top 15px
-    width 300px
-    height s('calc(100% - %s)', $top * 2)
-
-    .group-list
-      display flex
-      flex 1
-      flex-direction column
-      overflow-x hidden
-      overflow-y auto
-      overflow-y overlay
-      scrollbar-gutter stable
-      scrollbar-width none
-      mask-image linear-gradient(to bottom, transparent, #000 25px, #000 calc(100% - 25px), transparent)
-
-      &::-webkit-scrollbar
-        width 0
-        height 0
-
-  .right
-    display flex
-    flex 1
-    flex-wrap wrap
-    align-content flex-start
-    overflow-x hidden
-    overflow-y auto
-    overflow-y overlay
-    box-sizing border-box
-    margin ($top + 15px) 35px ($top + 15px) 0
-    height s('calc(100% - %s)', ($top + 15px) * 2)
-    scrollbar-gutter stable
-    scrollbar-width none
-    mask-image linear-gradient(to bottom, transparent, #000 30px, #000, #000 calc(100% - 30px), transparent), linear-gradient(to left, black, transparent 50px)
-    mask-size 100% 100%
-    mask-position 0 0, 100% 0
-    mask-repeat no-repeat, no-repeat
-
-    &::-webkit-scrollbar
-      width 12px
-      height 12px
-
-    &::-webkit-scrollbar-track
-      margin 0
-      background #545454
-
-    &::-webkit-scrollbar-thumb
-      background #c1c8d2
-
-    .add
-      display flex
-      flex-direction column
-      justify-content center
-      align-items center
-      // overflow hidden
-      box-sizing border-box
-      margin 10px
-      width 387px
-      height 650px
-      border-bottom 15px solid #c3c3c3
-      border-top-right-radius 50px
-      background linear-gradient(to bottom, #373737, #615a6d)
-      color #afafaf
-      cursor pointer
-
-      &:hover
-        position relative
-        filter brightness(1.1)
-
-        &:after
-          position absolute
-          top 0
-          right 0
-          bottom -15px
-          left 0
-          border 5px solid rgba(255, 255, 255, 0.7)
-          border-top-right-radius 50px
-          content ''
-          pointer-events none
-
-.del
-  position absolute
-  top 0
-  right 0
-  display flex
-  justify-content center
-  align-items center
-  width 80px
-  height 80px
-  font-size 50px
-  opacity 0
-  cursor pointer
-
-  :deep(path)
-    fill #fff
-
-  &:hover
-    opacity 1
+  box-sizing: border-box;
+  margin: 45px 35px 45px 0;
+  height: calc(100% - 90px);
+  scrollbar-gutter: stable;
+  scrollbar-width: none;
+  mask-image:
+    linear-gradient(to bottom, transparent, #000 30px, #000, #000 calc(100% - 30px), transparent),
+    linear-gradient(to left, #000, transparent 50px);
+  mask-size: 100% 100%;
+  mask-position:
+    0 0,
+    100% 0;
+  mask-repeat: no-repeat, no-repeat;
+}
+.character-select .right::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.character-select .right::-webkit-scrollbar-track {
+  margin: 0;
+  background: #545454;
+}
+.character-select .right::-webkit-scrollbar-thumb {
+  background: #c1c8d2;
+}
+.character-select .right .add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 10px;
+  width: 387px;
+  height: 650px;
+  border-bottom: 15px solid #c3c3c3;
+  border-top-right-radius: 50px;
+  background: linear-gradient(to bottom, #373737, #615a6d);
+  color: #afafaf;
+  cursor: pointer;
+}
+.character-select .right .add:hover {
+  position: relative;
+  filter: brightness(1.1);
+}
+.character-select .right .add:hover:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: -15px;
+  left: 0;
+  border: 5px solid rgba(255, 255, 255, 0.7);
+  border-top-right-radius: 50px;
+  content: '';
+  pointer-events: none;
+}
+.del {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  font-size: 50px;
+  opacity: 0;
+  cursor: pointer;
+}
+.del :deep(path) {
+  fill: #fff;
+}
+.del:hover {
+  opacity: 1;
+}
 </style>

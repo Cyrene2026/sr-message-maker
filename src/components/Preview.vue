@@ -319,111 +319,136 @@ onUnmounted(() => {
 })
 </script>
 
-<style lang="stylus" scoped>
-@import './Message/Message.styl'
-@import './Common/Window.styl'
-
-.bg
-  position absolute
-  z-index 9
-  width 100%
-  height 100%
-  background rgba(0, 0, 0, 0.6)
-  box-shadow 0 0 20px 0px rgba(0, 0, 0, 0.5)
-  backdrop-filter blur(20px)
-  -webkit-backdrop-filter blur(20px)
-
-  .green
-    position absolute
-    top 50%
-    left 50%
-    width 95%
-    height 95%
-    background-color green
-    transition 0.2s
-    transform translate(-50%, -50%)
-
-  .green-btn
-    position absolute
-    right 80px
-    bottom -75px
-    display flex
-    justify-content center
-    align-items center
-    border-radius 15px
-    background #666
-    cursor pointer
-    transition background 0.2s
-    user-select none
-
-    &:hover
-      &:before
-        position absolute
-        top -10px
-        right -10px
-        bottom -10px
-        left -10px
-        border 5px solid #666
-        border-radius 10px
-        content ''
-
-  .highlight
-    background none
-
-.message-preview
-  position absolute
-  top 10%
-  left 900px
-  z-index 10
-  width 1400px
-  height 80%
-  message()
-
-  :deep(*)
-    cursor auto !important
-
-  .option-box
-    z-index 9
-    overflow-y auto
-    padding 20px 50px
-    height 90px * 3 + 20px * 4
-    border-top var(--menu-border-hover)
-    background var(--message-menu-background-color)
-    scrollbar-width none
-
-    &::-webkit-scrollbar
-      width 0
-      height 0
-
-    .option
-      display flex
-      justify-content center
-      align-items center
-      option()
-      margin 20px 0
-      cursor pointer !important
-      user-select none
-
-.option-enter-active
-  transition height 0.25s, opacity 0.75s
-
-.option-leave-active
-  transition all 0.15s
-
-.option-enter-from
-.option-leave-to
-  height 0 !important
-  opacity 0 !important
-
-.preview-enter-active
-  transition all 0.3s
-
-.preview-delay-enter-active
-  transition all 0.3s
-  transition-delay 0.5s
-
-.preview-enter-from
-.preview-delay-enter-from
-  opacity 0
-  transform scaleY(0)
+<style scoped>
+.bg {
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.bg .green {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 95%;
+  height: 95%;
+  background-color: #008000;
+  transition: 0.2s;
+  transform: translate(-50%, -50%);
+}
+.bg .green-btn {
+  position: absolute;
+  right: 80px;
+  bottom: -75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background: #666;
+  cursor: pointer;
+  transition: background 0.2s;
+  user-select: none;
+}
+.bg .green-btn:hover:before {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  left: -10px;
+  border: 5px solid #666;
+  border-radius: 10px;
+  content: '';
+}
+.bg .highlight {
+  background: none;
+}
+.message-preview {
+  position: absolute;
+  top: 10%;
+  left: 900px;
+  z-index: 10;
+  width: 1400px;
+  height: 80%;
+  border-radius: 0 50px 0 0;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
+}
+.message-preview:after {
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 5px solid rgba(180, 180, 180, 0.5);
+  content: '';
+  pointer-events: none;
+  clip-path: polygon(0 0, 10px 0, 100% calc(100% - 10px), 100% 100%, 0 100%);
+}
+.message-preview :deep(*) {
+  cursor: auto !important;
+}
+.message-preview .option-box {
+  z-index: 9;
+  overflow-y: auto;
+  padding: 20px 50px;
+  height: 350px;
+  border-top: var(--menu-border-hover);
+  background: var(--message-menu-background-color);
+  scrollbar-width: none;
+}
+.message-preview .option-box::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.message-preview .option-box .option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 5px 30px;
+  width: 100%;
+  height: 90px;
+  border: 2px solid var(--border-hover-color);
+  background: var(--option-background-color);
+  box-shadow: 2px 2px 10px var(--border-hover-color);
+  color: var(--text-color);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 40px;
+  margin: 20px 0;
+  cursor: pointer !important;
+  user-select: none;
+}
+.option-enter-active {
+  transition:
+    height 0.25s,
+    opacity 0.75s;
+}
+.option-leave-active {
+  transition: all 0.15s;
+}
+.option-enter-from,
+.option-leave-to {
+  height: 0 !important;
+  opacity: 0 !important;
+}
+.preview-enter-active {
+  transition: all 0.3s;
+}
+.preview-delay-enter-active {
+  transition: all 0.3s;
+  transition-delay: 0.5s;
+}
+.preview-enter-from,
+.preview-delay-enter-from {
+  opacity: 0;
+  transform: scaleY(0);
+}
 </style>

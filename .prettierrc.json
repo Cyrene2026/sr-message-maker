@@ -6,8 +6,5 @@
   "printWidth": 100,
   "trailingComma": "none",
   "singleAttributePerLine": true,
-  "endOfLine": "auto",
-  "plugins": [
-    "prettier-plugin-stylus-format"
-  ]
+  "endOfLine": "auto"
 }

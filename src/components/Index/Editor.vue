@@ -504,146 +504,170 @@ const onChange = () => {
 const opacity = computed(() => (state.drag ? 0 : 1))
 </script>
 
-<style lang="stylus" scoped>
-@import '../Message/Message.styl'
-@import '../Common/Window.styl'
-
-box()
-  position absolute
-  top 180px
-  left 1000px
-  width 2100px
-  height 85%
-
-.defalut-wrapper
-  display flex
-  flex-direction column
-  justify-content center
-  align-items center
-  background rgba(255, 255, 255, 0.1)
-  box()
-  message()
-  box-shadow unset
-  user-select none
-
-  span
-    margin 100px 0 200px
-    color #b0aba5
-    font-size 40px
-    user-select none
-
-.message-editor
-  box()
-  message()
-
-  .message-item
-    &:hover
-      background var(--message-item-background-color)
-
-      :deep(.change)
-      :deep(.del)
-        opacity v-bind(opacity) !important
-
-  .bottom
-    position relative
-    display flex
-    align-items center
-    box-sizing border-box
-    padding 0 10px
-    width 100%
-    height 150px
-    border-top var(--menu-border-hover)
-    background var(--message-menu-background-color)
-
-    .avatar
-      position absolute
-      top 50%
-      left 0
-      overflow hidden
-      box-sizing border-box
-      margin-left 20px
-      width 105px
-      height 105px
-      border-radius 50%
-      background #c2c2c2
-      cursor pointer
-      transform translateY(-50%)
-      user-select none
-
-      &:hover
-        box-shadow 5px 5px 15px #aaa
-
-      img
-        width 100%
-        height 100%
-        border-radius 50%
-        background var(--avatar-background)
-        object-fit contain
-        clip-path var(--avatar-image-clip-path-bilibiliwiki-only)
-
-    .right
-      margin 0 20px
-      padding 0 10px
-      border-radius 50px
-
-    .btn
-      display flex
-      justify-content center
-      align-items center
-      overflow hidden
-      width 100px
-      height 100px
-      background #e8e8e8
-      color #575B66
-      cursor pointer
-      transition 0.2s
-      user-select none
-
-      img
-        width 100%
-        height 100%
-        object-fit contain
-
-      &:hover
-        box-shadow 5px 5px 15px #aaa
-
-    .input
-      flex 1
-      margin-left 60px
-      padding 0 50px 0 90px
-      height 100px
-      outline none
-      border none
-      background #e8e8e8
-      color #121212
-      text-align center
-      font-size 48px
-      transition box-shadow 0.2s
-
-      &:focus
-      &:hover
-        box-shadow 5px 5px 15px #aaa
-
-.fallback
-  display none !important
-
-.chosen
-  background var(--message-item-background-color) !important
-
-  &:before
-    position absolute
-    top 0
-    right 0
-    bottom 0
-    left 0
-    box-sizing border-box
-    border 3px solid rgba(0, 0, 0, 0.2)
-    border-radius 10px
-    content ''
-
-.above-option
-  padding-bottom 60px
-
-.below-option
-  padding-top 60px
+<style scoped>
+.defalut-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  position: absolute;
+  top: 180px;
+  left: 1000px;
+  width: 2100px;
+  height: 85%;
+  border-radius: 0 50px 0 0;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: unset;
+  user-select: none;
+}
+.defalut-wrapper:after {
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 5px solid rgba(180, 180, 180, 0.5);
+  content: '';
+  pointer-events: none;
+  clip-path: polygon(0 0, 10px 0, 100% calc(100% - 10px), 100% 100%, 0 100%);
+}
+.defalut-wrapper span {
+  margin: 100px 0 200px;
+  color: #b0aba5;
+  font-size: 40px;
+  user-select: none;
+}
+.message-editor {
+  position: absolute;
+  top: 180px;
+  left: 1000px;
+  width: 2100px;
+  height: 85%;
+  border-radius: 0 50px 0 0;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
+}
+.message-editor:after {
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 5px solid rgba(180, 180, 180, 0.5);
+  content: '';
+  pointer-events: none;
+  clip-path: polygon(0 0, 10px 0, 100% calc(100% - 10px), 100% 100%, 0 100%);
+}
+.message-editor .message-item:hover {
+  background: var(--message-item-background-color);
+}
+.message-editor .message-item:hover :deep(.change),
+.message-editor .message-item:hover :deep(.del) {
+  opacity: v-bind(opacity) !important;
+}
+.message-editor .bottom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 10px;
+  width: 100%;
+  height: 150px;
+  border-top: var(--menu-border-hover);
+  background: var(--message-menu-background-color);
+}
+.message-editor .bottom .avatar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-left: 20px;
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: #c2c2c2;
+  cursor: pointer;
+  transform: translateY(-50%);
+  user-select: none;
+}
+.message-editor .bottom .avatar:hover {
+  box-shadow: 5px 5px 15px #aaa;
+}
+.message-editor .bottom .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--avatar-background);
+  object-fit: contain;
+  clip-path: var(--avatar-image-clip-path-bilibiliwiki-only);
+}
+.message-editor .bottom .right {
+  margin: 0 20px;
+  padding: 0 10px;
+  border-radius: 50px;
+}
+.message-editor .bottom .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  background: #e8e8e8;
+  color: #575b66;
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+}
+.message-editor .bottom .btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.message-editor .bottom .btn:hover {
+  box-shadow: 5px 5px 15px #aaa;
+}
+.message-editor .bottom .input {
+  flex: 1;
+  margin-left: 60px;
+  padding: 0 50px 0 90px;
+  height: 100px;
+  outline: none;
+  border: none;
+  background: #e8e8e8;
+  color: #121212;
+  text-align: center;
+  font-size: 48px;
+  transition: box-shadow 0.2s;
+}
+.message-editor .bottom .input:focus,
+.message-editor .bottom .input:hover {
+  box-shadow: 5px 5px 15px #aaa;
+}
+.fallback {
+  display: none !important;
+}
+.chosen {
+  background: var(--message-item-background-color) !important;
+}
+.chosen:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  content: '';
+}
+.above-option {
+  padding-bottom: 60px;
+}
+.below-option {
+  padding-top: 60px;
+}
 </style>

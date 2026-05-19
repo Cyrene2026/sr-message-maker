@@ -92,47 +92,46 @@ const qualityChange = () => {
 const lastUpdate = new Date(BUILD_TIME).toLocaleString() || '-'
 </script>
 
-<style lang="stylus" scoped>
-$margin = 40px
-
-.data
-  margin 40px 0
-  width 1000px
-  user-select none
-
-  .info
-    display flex
-    justify-content space-between
-    align-items center
-    margin-bottom 20px
-    border 2px solid rgba(0, 0, 0, 0.2)
-    border-radius 10px
-    font-size 36px
-
-    &:hover
-      background #ddd
-
-      .icon
-        color #333
-
-    .text
-      display flex
-      align-items center
-      height 100px
-
-      .label
-        display flex
-        align-items center
-        padding 0 $margin
-        width 150px
-        height 100%
-        border-right 2px solid rgba(0, 0, 0, 0.2)
-
-      .value
-        margin 0 $margin
-        color #333
-
-    .icon
-      margin-right $margin
-      color #aaa
+<style scoped>
+.data {
+  margin: 40px 0;
+  width: 1000px;
+  user-select: none;
+}
+.data .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  font-size: 36px;
+}
+.data .info:hover {
+  background: #ddd;
+}
+.data .info:hover .icon {
+  color: #333;
+}
+.data .info .text {
+  display: flex;
+  align-items: center;
+  height: 100px;
+}
+.data .info .text .label {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  width: 150px;
+  height: 100%;
+  border-right: 2px solid rgba(0, 0, 0, 0.2);
+}
+.data .info .text .value {
+  margin: 0 40px;
+  color: #333;
+}
+.data .info .icon {
+  margin-right: 40px;
+  color: #aaa;
+}
 </style>

@@ -113,61 +113,62 @@ const onConfirml = () => {
 callback.confirm = onConfirml
 </script>
 
-<style lang="stylus" scoped>
-.config
-  padding 60px 0
-  width 1600px
-  user-select none
-
-  .table
-    width 100%
-    border-collapse collapse
-
-    .line
-      height 120px
-      border 1px solid #000
-
-      .left
-      .right
-        box-sizing border-box
-        padding 5px 40px
-
-      .left
-        width 60%
-        background transparent
-
-      .right
-        width 40%
-        background #e2e2e2
-
-  .slider
-    display flex
-    justify-content space-evenly
-    align-items center
-
-    .range
-      flex 0 0 70%
-      margin 20px 0
-
-    .text
-      flex 0 0 20%
-      text-align right
-
-  .link
-    position relative
-    display flex
-    justify-content center
-    align-items center
-    cursor pointer
-
-    .icon
-      position absolute
-      right 0
-
-  .link_disable
-    color #808080
-    cursor not-allowed
-
-    .icon
-      display none
+<style scoped>
+.config {
+  padding: 60px 0;
+  width: 1600px;
+  user-select: none;
+}
+.config .table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.config .table .line {
+  height: 120px;
+  border: 1px solid #000;
+}
+.config .table .line .left,
+.config .table .line .right {
+  box-sizing: border-box;
+  padding: 5px 40px;
+}
+.config .table .line .left {
+  width: 60%;
+  background: transparent;
+}
+.config .table .line .right {
+  width: 40%;
+  background: #e2e2e2;
+}
+.config .slider {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.config .slider .range {
+  flex: 0 0 70%;
+  margin: 20px 0;
+}
+.config .slider .text {
+  flex: 0 0 20%;
+  text-align: right;
+}
+.config .link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.config .link .icon {
+  position: absolute;
+  right: 0;
+}
+.config .link_disable {
+  color: #808080;
+  cursor: not-allowed;
+}
+.config .link_disable .icon {
+  display: none;
+}
 </style>
