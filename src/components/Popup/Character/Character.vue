@@ -368,6 +368,8 @@ const handleDelClick = (key: string, name: string) => {
   font-size: 50px;
   opacity: 0;
   cursor: pointer;
+  transition: opacity 0.2s;
+  user-select: none;
 }
 .del :deep(path) {
   fill: #fff;

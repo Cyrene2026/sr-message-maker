@@ -26,17 +26,11 @@
         >
           {{ missionState }}
         </div>
-        <div
-          v-if="preview"
+        <TextContent
           class="text"
-        >
-          {{ text }}
-        </div>
-        <input
-          v-else
-          class="text"
-          :value="text"
-          @input="emit('update', ($event.target as HTMLInputElement).value)"
+          :model-value="text"
+          :mode="preview ? 'text' : 'input'"
+          @update:model-value="emit('update', $event)"
           @blur="updateText(($event.target as HTMLInputElement).value)"
           @keydown="onKeydown"
         />
@@ -83,6 +77,7 @@ import image_2 from '@/assets/images/mission/开拓任务.webp'
 import image_4 from '@/assets/images/mission/开拓续闻.webp'
 import image_3 from '@/assets/images/mission/日常任务.webp'
 import { state } from '@/store/setting'
+import TextContent from '../Common/TextContent.vue'
 import Icon from '../Common/Icon.vue'
 import { onKeydown } from './Message'
 
@@ -216,7 +211,9 @@ const updateText = (text: string) => {
   height: 60px;
   opacity: 0;
   cursor: pointer;
+  transition: opacity 0.2s;
   transform: translateY(-50%);
+  user-select: none;
 }
 .mission .bg .del :deep(path) {
   fill: var(--message-item-name-color);

@@ -56,10 +56,10 @@
                 alt=""
               />
             </div>
-            <input
-              type="text"
+            <TextContent
               class="input"
               v-model="input.text"
+              mode="input"
               @keydown="onKeydown"
               :placeholder="defaultText"
               ref="inputDom"
@@ -93,8 +93,7 @@
               <Icon name="image" />
             </div>
             <div
-              class="btn"
-              style="border-radius: 0 50px 50px 0"
+              class="btn emoticon-btn"
               :style="{
                 background: emoticonData.show ? '#575B66' : '',
                 color: emoticonData.show ? '#e8e8e8' : ''
@@ -141,6 +140,7 @@ import Emoticon from '@/components/Message/Emoticon/Emoticon.vue'
 import { getAvatar, info, scrollToBottom, title } from '@/components/Message/Message'
 import MessageBox from '@/components/Message/MessageBox.vue'
 import MessageItem from '@/components/Message/MessageItem.vue'
+import TextContent from '@/components/Common/TextContent.vue'
 import { input } from '@/store/input'
 import { currentMessage, message, messageIndex } from '@/store/message'
 import { state } from '@/store/setting'
@@ -151,7 +151,7 @@ const appearTransition = ref('slide-left-first')
 const defaultText = DEFAULT_TEXT
 
 const boxRef = ref<InstanceType<typeof MessageBox>>()
-const inputDom = ref<HTMLInputElement | null>(null)
+const inputDom = ref<InstanceType<typeof TextContent> | null>(null)
 
 let randomKey = 0
 const getRandomKey = (): number => {
@@ -629,6 +629,9 @@ const opacity = computed(() => (state.drag ? 0 : 1))
 }
 .message-editor .bottom .btn:hover {
   box-shadow: 5px 5px 15px #aaa;
+}
+.message-editor .bottom .emoticon-btn {
+  border-radius: 0 50px 50px 0;
 }
 .message-editor .bottom .input {
   flex: 1;

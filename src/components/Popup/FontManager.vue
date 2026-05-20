@@ -10,17 +10,17 @@
       </div>
       <template #footer>
         <Btn
-          class="btn"
+          class="font-btn"
           name="默认字体"
           @click="resetFont"
         />
         <Btn
-          class="btn"
+          class="font-btn"
           name="系统字体"
           @click="setFont('')"
         />
         <Btn
-          class="btn"
+          class="font-btn"
           name="上传字体"
           @click="setCustomFont"
         />
@@ -109,7 +109,7 @@ const setCustomFont = async () => {
   font-size: 46px;
   user-select: none;
 }
-.btn {
+.font-btn {
   width: 500px;
 }
 </style>

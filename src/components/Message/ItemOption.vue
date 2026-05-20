@@ -21,12 +21,11 @@
           height="50"
         />
       </div>
-      <input
-        :value="text"
-        :style="{
-          background: highlight ? 'var(--option-background-hover-color)' : ''
-        }"
-        @input="emit('update', ($event.target as HTMLInputElement).value)"
+      <OptionText
+        editable
+        :text="text"
+        :highlight="highlight"
+        @update="emit('update', $event)"
         @blur="updateText(($event.target as HTMLInputElement).value)"
         @keydown="onKeydown"
       />
@@ -48,6 +47,7 @@
 import { state } from '@/store/setting'
 import Icon from '../Common/Icon.vue'
 import { onKeydown } from './Message'
+import OptionText from './OptionText.vue'
 
 defineProps<{
   text: string
@@ -89,6 +89,7 @@ const updateText = (text: string) => {
   cursor: pointer;
   transition: opacity 0.2s;
   transform: translateY(-50%);
+  user-select: none;
 }
 .option .change :deep(path),
 .option .del :deep(path) {
@@ -104,21 +105,7 @@ const updateText = (text: string) => {
 .option .del {
   right: 20px;
 }
-.option input {
-  overflow: hidden;
-  box-sizing: border-box;
-  padding: 5px 30px;
-  width: 100%;
-  height: 90px;
-  border: 2px solid var(--border-hover-color);
-  background: var(--option-background-color);
-  box-shadow: 2px 2px 10px var(--border-hover-color);
-  color: var(--text-color);
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: bold;
-  font-size: 40px;
+.option :deep(.option-text) {
   width: calc(100% - var(--message-item-avatar-width) * 2 - 100px);
 }
 </style>

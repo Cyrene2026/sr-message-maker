@@ -5,13 +5,13 @@
   >
     <div class="notice">
       <Icon name="warn" />
-      <span
-        :contenteditable="!preview"
-        @keydow="preview ? undefined : onKeydown($event)"
+      <TextContent
+        class="notice-text"
+        :model-value="text"
+        :mode="preview ? 'text' : 'editable'"
+        @keydown="preview ? undefined : onKeydown($event)"
         @blur="preview ? undefined : updateMessage($event)"
-      >
-        {{ text }}
-      </span>
+      />
       <div v-if="!preview">
         <div
           @click="emit('delete')"
@@ -30,6 +30,7 @@
 
 <script lang="ts" setup>
 import { state } from '@/store/setting'
+import TextContent from '../Common/TextContent.vue'
 import Icon from '../Common/Icon.vue'
 import { onKeydown } from './Message'
 
@@ -71,7 +72,7 @@ const updateMessage = (e: Event) => {
 .notice img {
   user-select: none;
 }
-.notice span {
+.notice .notice-text {
   overflow: hidden;
   margin-left: 20px;
   max-width: 80%;
@@ -92,6 +93,8 @@ const updateMessage = (e: Event) => {
   height: 60px;
   opacity: 0;
   cursor: pointer;
+  transition: opacity 0.2s;
+  user-select: none;
 }
 .notice div .del :deep(path) {
   fill: var(--notice-color);

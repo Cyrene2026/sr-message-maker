@@ -9,8 +9,8 @@
     <Header />
     <Index />
     <User />
-    <Link />
     <Preview />
+    <Test v-if="showTest" />
   </Main>
 </template>
 
@@ -19,9 +19,11 @@ import { Main } from 'star-rail-vue'
 import { popupManager } from './assets/scripts/popup'
 import Header from './components/Header.vue'
 import Index from './components/Index.vue'
-import Link from './components/Link.vue'
 import Preview from './components/Preview.vue'
+import Test from './components/Test.vue'
 import User from './components/User.vue'
+
+const showTest = new URLSearchParams(window.location.search).has('test')
 </script>
 
 <style scoped>

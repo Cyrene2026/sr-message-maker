@@ -55,14 +55,13 @@
               @click.stop
               v-if="autoPlay.flag && autoPlay.option.length > 0"
             >
-              <div
-                class="option"
+              <OptionText
                 v-for="(item, key) in autoPlay.option"
                 :key="key"
+                class="option"
+                :text="item.text"
                 @click.stop="handleOptionClick(item)"
-              >
-                {{ item.text }}
-              </div>
+              />
             </div>
           </Transition>
         </template>
@@ -82,6 +81,7 @@ import Icon from './Common/Icon.vue'
 import { info, scrollToBottom, title } from './Message/Message'
 import MessageBox from './Message/MessageBox.vue'
 import MessageItem from './Message/MessageItem.vue'
+import OptionText from './Message/OptionText.vue'
 
 const boxRef = ref<InstanceType<typeof MessageBox>>()
 
@@ -405,23 +405,6 @@ onUnmounted(() => {
   height: 0;
 }
 .message-preview .option-box .option {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  box-sizing: border-box;
-  padding: 5px 30px;
-  width: 100%;
-  height: 90px;
-  border: 2px solid var(--border-hover-color);
-  background: var(--option-background-color);
-  box-shadow: 2px 2px 10px var(--border-hover-color);
-  color: var(--text-color);
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: bold;
-  font-size: 40px;
   margin: 20px 0;
   cursor: pointer !important;
   user-select: none;

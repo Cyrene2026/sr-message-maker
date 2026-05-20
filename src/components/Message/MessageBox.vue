@@ -24,16 +24,10 @@
           appear
         >
           <div :key="index">
-            <div
-              v-if="preview"
+            <TextContent
               class="title"
-            >
-              {{ title }}
-            </div>
-            <input
-              v-else
-              class="title"
-              :value="title"
+              :model-value="title"
+              :mode="preview ? 'text' : 'input'"
               @keydown="onKeydown"
               @focus="getTitle"
               @blur="updateTitle"
@@ -66,6 +60,7 @@
 
 <script lang="ts" setup>
 import Icon from '../Common/Icon.vue'
+import TextContent from '../Common/TextContent.vue'
 import { onKeydown } from './Message'
 
 defineProps<{

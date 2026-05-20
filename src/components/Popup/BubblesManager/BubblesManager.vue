@@ -1,25 +1,23 @@
 <template>
   <Popup :index="props.index">
     <Window title="更换对话框">
-      <div class="select">
+      <div class="bubble-list">
         <div
-          class="item"
+          class="bubble-option"
           v-for="(item, key) in bubbles"
           :key="key"
-          :class="{ highlight: index === key }"
+          :class="{ 'bubble-option_active': index === key }"
           @click="index = key"
         >
           <div :class="`bubbles-${key}`">
-            <div class="text-box">
-              <div class="text">你好</div>
-            </div>
+            <BubbleText text="你好" />
           </div>
         </div>
       </div>
       <template #outside>
-        <div class="other-setting">
+        <div class="manager-actions">
           <div
-            class="setting-btn"
+            class="manager-action-btn"
             title="更新记录"
             @click.stop="popupManager.open('log')"
           >
@@ -30,7 +28,7 @@
             />
           </div>
           <div
-            class="setting-btn"
+            class="manager-action-btn"
             title="字体设置"
             @click.stop="popupManager.open('font')"
           >
@@ -41,14 +39,14 @@
             />
           </div>
           <div
-            class="setting-btn"
+            class="manager-action-btn"
             title="数据管理"
             @click.stop="popupManager.open('data')"
           >
             <Icon name="data" />
           </div>
           <div
-            class="setting-btn"
+            class="manager-action-btn"
             title="其它设置"
             @click.stop="popupManager.open('setting')"
           >
@@ -58,14 +56,14 @@
       </template>
       <template #left>
         <ItemPreview :name="name">
-          <div class="preview-text-box">
+          <div class="bubble-preview">
             <div :class="`bubbles-${index}`">
-              <div class="text-box">
-                <div class="text">
+              <BubbleText>
+                <template #default>
                   <span>———</span>
                   <span>——</span>
-                </div>
-              </div>
+                </template>
+              </BubbleText>
             </div>
           </div>
         </ItemPreview>
@@ -92,6 +90,7 @@ import { bubbles } from '@/assets/data/bubbles'
 import { popupManager } from '@/assets/scripts/popup'
 import Icon from '@/components/Common/Icon.vue'
 import ItemPreview from '@/components/Common/ItemPreview.vue'
+import BubbleText from '@/components/Message/BubbleText.vue'
 import { setting } from '@/store/setting'
 import { Btn, Popup, Window } from 'star-rail-vue'
 import { callback } from './data'
@@ -140,54 +139,34 @@ callback.confirm = onBtnClick
 </script>
 
 <style scoped>
-@import '../../../assets/styles/bubbles.css';
-
-.text-box {
-  position: relative;
-  margin-bottom: 10px;
-}
-.text-box .text {
-  display: block;
-  margin-top: 15px;
-  padding: 35px;
-  min-width: 20px;
-  min-height: 65px;
-  width: fit-content;
-  border-radius: 0 25px 25px 25px;
-  background: #ebebeb;
-  box-shadow: -2px 4px #9d9f9f;
-  color: var(--text-color);
-  word-break: break-word;
-  font-size: 45px;
-}
-.preview-text-box .text-box {
+.bubble-preview :deep(.text-box) {
   transform: scale(0.9);
 }
-.preview-text-box .text-box .text {
-  display: flex !important;
+.bubble-preview :deep(.text-box .text) {
+  display: flex;
   flex-direction: column;
 }
-.preview-text-box .text-box .text span {
+.bubble-preview :deep(.text-box .text span) {
   overflow: hidden;
   max-width: 125px;
   word-break: break-all;
   font-weight: bold;
   line-height: 40px;
 }
-.preview-text-box .bubbles-0 .text {
-  padding: 25px 40px !important;
+.bubble-preview :deep(.bubbles-0 .text) {
+  padding: 25px 40px;
 }
-.preview-text-box .bubbles-1 .text,
-.preview-text-box .bubbles-2 .text {
-  padding: 0px !important;
+.bubble-preview :deep(.bubbles-1 .text),
+.bubble-preview :deep(.bubbles-2 .text) {
+  padding: 0;
 }
-.preview-text-box .bubbles-3 {
+.bubble-preview .bubbles-3 {
   margin-left: 15px;
 }
-.preview-text-box .bubbles-3 .text {
-  padding: 15px 5px !important;
+.bubble-preview :deep(.bubbles-3 .text) {
+  padding: 15px 5px;
 }
-.other-setting .setting-btn {
+.manager-actions .manager-action-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -200,13 +179,13 @@ callback.confirm = onBtnClick
   background: rgba(255, 255, 255, 0.8);
   cursor: pointer;
 }
-.other-setting .setting-btn :deep(path) {
+.manager-actions .manager-action-btn :deep(path) {
   fill: #767479;
 }
-.other-setting .setting-btn:hover {
+.manager-actions .manager-action-btn:hover {
   background: #fff;
 }
-.select {
+.bubble-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -217,7 +196,7 @@ callback.confirm = onBtnClick
   height: 450px;
   user-select: none;
 }
-.select .item {
+.bubble-list .bubble-option {
   position: relative;
   display: flex;
   justify-content: center;
@@ -231,27 +210,27 @@ callback.confirm = onBtnClick
   background: #c5c6ca;
   cursor: pointer;
 }
-.select .item:hover {
+.bubble-list .bubble-option:hover {
   background: #d7d7d7;
 }
-.select .item .text-box {
+.bubble-list .bubble-option :deep(.text-box) {
   transform: scale(0.8);
 }
-.select .item .bubbles-0 .text {
-  padding: 25px 50px !important;
+.bubble-list .bubble-option :deep(.bubbles-0 .text) {
+  padding: 25px 50px;
 }
-.select .item .bubbles-1 .text,
-.select .item .bubbles-2 .text {
-  padding: 1px 8px !important;
+.bubble-list .bubble-option :deep(.bubbles-1 .text),
+.bubble-list .bubble-option :deep(.bubbles-2 .text) {
+  padding: 1px 8px;
 }
-.select .item .bubbles-3 .text {
-  padding: 10px !important;
+.bubble-list .bubble-option :deep(.bubbles-3 .text) {
+  padding: 10px;
 }
-.highlight {
-  border: 4px solid #14120d !important;
-  cursor: auto !important;
+.bubble-list .bubble-option_active {
+  border: 4px solid #14120d;
+  cursor: auto;
 }
-.highlight:after {
+.bubble-list .bubble-option_active:after {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -264,7 +243,7 @@ callback.confirm = onBtnClick
   content: '使用中';
   font-size: 28px;
 }
-.highlight:hover {
-  background: #c5c6ca !important;
+.bubble-list .bubble-option_active:hover {
+  background: #c5c6ca;
 }
 </style>

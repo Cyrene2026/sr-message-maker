@@ -22,7 +22,7 @@
   --menu-border-hover: 5px solid var(--border-hover-color);
   --menu-border-highlight: 5px solid #f3f4f6;
   --option-background-color: #ece9ec;
-  --option-background--hover-color: #ccc;
+  --option-background-hover-color: #ccc;
   --avatar-background: #3a3a3a;
   --avatar-image-clip-path-bilibiliwiki-only: circle(46%);
 }
@@ -55,10 +55,6 @@ img {
 #app {
   background: url('@/assets/images/主背景.webp') center / cover;
 }
-.del {
-  transition: opacity 0.2s;
-  user-select: none;
-}
 .grabbing * {
   cursor: grabbing !important;
 }
@@ -87,21 +83,5 @@ img {
 @keyframes first {
   from {
     opacity: 0;
-  }
-}
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
-@keyframes open {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
   }
 }

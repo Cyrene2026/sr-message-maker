@@ -75,7 +75,7 @@
       </div>
       <template #left>
         <ItemPreview
-          style="margin-top: 45px"
+          class="avatar-preview"
           :img="imgUrl"
           :name="avatarName"
           width="350px"
@@ -229,6 +229,9 @@ const changeToGameCharacter = () => {
     linear-gradient(to bottom, #000 calc(100% - 60px), transparent),
     linear-gradient(to left, #000, transparent 50px) !important;
 }
+.avatar-preview {
+  margin-top: 45px;
+}
 .list {
   display: flex;
   flex-wrap: wrap;
@@ -284,6 +287,8 @@ const changeToGameCharacter = () => {
   right: -20px;
   opacity: 0;
   cursor: pointer;
+  transition: opacity 0.2s;
+  user-select: none;
 }
 .list .avatar .del:hover {
   opacity: 1;

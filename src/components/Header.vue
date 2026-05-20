@@ -54,4 +54,12 @@
   bottom: 0;
   animation: rotate 60s linear infinite;
 }
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
 </style>

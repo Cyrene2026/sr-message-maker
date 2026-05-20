@@ -64,24 +64,14 @@
             @click.stop="preview ? undefined : emit('image', !!item.emoticon)"
           />
         </div>
-        <div
+        <BubbleText
           v-else
-          class="text-box"
-        >
-          <div
-            class="text"
-            :contenteditable="!preview"
-            @keydown="preview ? undefined : onKeydown($event)"
-            @blur="preview ? undefined : updateMessage($event)"
-          >
-            {{ item.text }}
-          </div>
-          <Icon
-            contenteditable="false"
-            class="bg-icon"
-            name="train"
-          />
-        </div>
+          :text="item.text"
+          :contenteditable="!preview"
+          show-icon
+          @keydown="preview ? undefined : onKeydown($event)"
+          @blur="preview ? undefined : updateMessage($event)"
+        />
       </transition>
     </div>
   </div>
@@ -92,6 +82,7 @@ import { bubbles } from '@/assets/data/bubbles'
 import { autoPlay } from '@/store/autoPlay'
 import { setting, state } from '@/store/setting'
 import Icon from '../Common/Icon.vue'
+import BubbleText from './BubbleText.vue'
 import { getAvatar, onKeydown } from './Message'
 
 defineProps<{
@@ -133,8 +124,6 @@ const updateMessage = (e: Event) => {
 </script>
 
 <style scoped>
-@import '../../assets/styles/bubbles.css';
-
 .message {
   display: flex;
   box-sizing: border-box;
@@ -197,6 +186,8 @@ const updateMessage = (e: Event) => {
   height: 60px;
   opacity: 0;
   cursor: pointer;
+  transition: opacity 0.2s;
+  user-select: none;
 }
 .message .message-item .name .del :deep(path) {
   fill: var(--message-item-name-color);
@@ -235,36 +226,6 @@ const updateMessage = (e: Event) => {
   width: 100%;
   cursor: pointer;
 }
-.message .message-item .text-box {
-  position: relative;
-  margin-bottom: 10px;
-}
-.message .message-item .text-box .text {
-  display: block;
-  margin-top: 15px;
-  padding: 35px;
-  min-width: 20px;
-  min-height: 65px;
-  width: fit-content;
-  border-radius: 0 25px 25px 25px;
-  background: #ebebeb;
-  box-shadow: -2px 4px #9d9f9f;
-  color: var(--text-color);
-  word-break: break-word;
-  font-size: 45px;
-}
-.message .message-item .text-box .bg-icon {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  z-index: 1;
-  height: 100px;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-.message .message-item .text-box .bg-icon :deep(path) {
-  fill: rgba(100, 100, 100, 0.005);
-}
 .right {
   flex-direction: row-reverse;
 }
@@ -274,7 +235,7 @@ const updateMessage = (e: Event) => {
 .right .message-item {
   align-items: flex-end;
 }
-.right .message-item .text-box .text {
+.right .message-item :deep(.text-box .text) {
   border-radius: 25px 0 25px 25px;
   box-shadow: 2px 4px #9d9f9f;
 }

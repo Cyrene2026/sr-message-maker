@@ -41,17 +41,14 @@
           <Icon
             v-if="item.state === 2"
             name="delete"
-            style="flex-shrink: 0"
           />
           <Icon
             v-else-if="item.state === 0"
             name="star"
-            style="flex-shrink: 0"
           />
           <Icon
             v-else
             name="check"
-            style="flex-shrink: 0"
           />
         </div>
         <div class="text">{{ item.msg }}</div>
@@ -308,6 +305,7 @@ const avatarUrl = computed(() => {
 }
 .message-item .message-list .message .icon {
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
   width: 50px;
@@ -334,6 +332,8 @@ const avatarUrl = computed(() => {
   background: rgba(255, 255, 255, 0.1);
   opacity: 0;
   cursor: pointer;
+  transition: opacity 0.2s;
+  user-select: none;
   backdrop-filter: blur(10px);
 }
 .message-item .message-list .message .del:hover {

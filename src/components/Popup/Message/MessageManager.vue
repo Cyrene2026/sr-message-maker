@@ -4,17 +4,17 @@
       title="消息管理"
       @close="close"
     >
-      <div class="config">
-        <table class="table">
+      <div class="message-config">
+        <table class="config-table">
           <tbody>
             <tr
-              class="line"
+              class="config-row"
               v-if="currentMessage?.list?.[data.key || -1]?.key !== '开拓者'"
             >
-              <td class="left">修改昵称</td>
-              <td class="right">
+              <td class="config-label">修改昵称</td>
+              <td class="config-control">
                 <div
-                  class="link"
+                  class="config-link"
                   @click.stop="handleChangeName"
                 >
                   <span>点击修改</span>
@@ -25,18 +25,18 @@
                 </div>
               </td>
             </tr>
-            <tr class="line">
-              <td class="left">等待时间</td>
-              <td class="right">
-                <div class="slider">
+            <tr class="config-row">
+              <td class="config-label">等待时间</td>
+              <td class="config-control">
+                <div class="interval-control">
                   <Slider
-                    class="range"
+                    class="interval-range"
                     :min="1"
                     :max="5"
                     :step="0.1"
                     v-model="data.interval"
                   />
-                  <span class="text">
+                  <span class="interval-text">
                     {{ data.interval ? data.interval + '秒' : '默认' }}
                   </span>
                 </div>
@@ -63,7 +63,7 @@
 
 <script lang="ts" setup>
 import { popupManager } from '@/assets/scripts/popup'
-import Icon from '@/components//Common/Icon.vue'
+import Icon from '@/components/Common/Icon.vue'
 import Slider from '@/components/Common/Slider.vue'
 import { currentMessage } from '@/store/message'
 import { Btn, Popup, Window } from 'star-rail-vue'
@@ -114,61 +114,61 @@ callback.confirm = onConfirml
 </script>
 
 <style scoped>
-.config {
+.message-config {
   padding: 60px 0;
   width: 1600px;
   user-select: none;
 }
-.config .table {
+.message-config .config-table {
   width: 100%;
   border-collapse: collapse;
 }
-.config .table .line {
+.message-config .config-row {
   height: 120px;
   border: 1px solid #000;
 }
-.config .table .line .left,
-.config .table .line .right {
+.message-config .config-label,
+.message-config .config-control {
   box-sizing: border-box;
   padding: 5px 40px;
 }
-.config .table .line .left {
+.message-config .config-label {
   width: 60%;
   background: transparent;
 }
-.config .table .line .right {
+.message-config .config-control {
   width: 40%;
   background: #e2e2e2;
 }
-.config .slider {
+.message-config .interval-control {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-.config .slider .range {
+.message-config .interval-control .interval-range {
   flex: 0 0 70%;
   margin: 20px 0;
 }
-.config .slider .text {
+.message-config .interval-control .interval-text {
   flex: 0 0 20%;
   text-align: right;
 }
-.config .link {
+.message-config .config-link {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
-.config .link .icon {
+.message-config .config-link .icon {
   position: absolute;
   right: 0;
 }
-.config .link_disable {
+.message-config .config-link_disabled {
   color: #808080;
   cursor: not-allowed;
 }
-.config .link_disable .icon {
+.message-config .config-link_disabled .icon {
   display: none;
 }
 </style>

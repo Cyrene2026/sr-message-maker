@@ -4,101 +4,89 @@
       title="数据管理"
       @close="close"
     >
-      <div class="data">
-        <div class="box">
-          <div class="info">
-            <span class="label">短信数</span>
-            <span class="value">{{ message.list.length }}</span>
+      <div class="data-manager">
+        <div class="data-section">
+          <div class="data-row">
+            <span class="data-label">短信数</span>
+            <span class="data-value">{{ message.list.length }}</span>
           </div>
-          <div
-            class="info"
-            style="border-top: none"
-          >
-            <span class="label">消息数</span>
-            <span class="value">{{ messageNum }}</span>
+          <div class="data-row">
+            <span class="data-label">消息数</span>
+            <span class="data-value">{{ messageNum }}</span>
           </div>
-          <div
-            class="info"
-            style="border-top: none"
-          >
-            <span class="label">数据大小</span>
-            <span class="value">{{ messageUsage }}</span>
+          <div class="data-row">
+            <span class="data-label">数据大小</span>
+            <span class="data-value">{{ messageUsage }}</span>
           </div>
-          <div class="btn-group">
+          <div class="action-list">
             <div
-              class="btn"
-              :class="{ disable: !hasMessage }"
+              class="action-btn"
+              :class="{ action_disabled: !hasMessage }"
               @click="deleteMessage"
             >
               <span>清空</span>
             </div>
             <div
-              class="btn"
-              :class="{ disable: !hasMessage }"
+              class="action-btn"
+              :class="{ action_disabled: !hasMessage }"
               @click="downloadMessage"
             >
               <span>导出</span>
             </div>
             <div
-              class="btn"
+              class="action-btn"
               @click="uploadMessage"
             >
               <span>导入</span>
             </div>
           </div>
         </div>
-        <div class="box">
-          <div class="info">
-            <span class="label">自定义角色</span>
-            <span class="value">{{ Object.keys(character.custom).length }}</span>
+        <div class="data-section">
+          <div class="data-row">
+            <span class="data-label">自定义角色</span>
+            <span class="data-value">{{ Object.keys(character.custom).length }}</span>
           </div>
-          <div
-            class="info"
-            style="border-top: none"
-          >
-            <span class="label">数据大小</span>
-            <span class="value">{{ characterUsage }}</span>
+          <div class="data-row">
+            <span class="data-label">数据大小</span>
+            <span class="data-value">{{ characterUsage }}</span>
           </div>
-          <div class="btn-group">
+          <div class="action-list">
             <div
-              class="btn"
-              :class="{ disable: !hasCharacter }"
+              class="action-btn"
+              :class="{ action_disabled: !hasCharacter }"
               @click="deleteCharacter"
             >
               <span>清空</span>
             </div>
             <div
-              class="btn"
-              :class="{ disable: !hasCharacter }"
+              class="action-btn"
+              :class="{ action_disabled: !hasCharacter }"
               @click="downloadCharacter"
             >
               <span>导出</span>
             </div>
             <div
-              class="btn"
+              class="action-btn"
               @click="uploadCharacter"
             >
               <span>导入</span>
             </div>
           </div>
         </div>
-        <div class="box">
-          <div class="info">
-            <span class="label">自定义头像</span>
-            <span class="value">{{ avatar.custom.length }}</span>
+        <div class="data-section">
+          <div class="data-row">
+            <span class="data-label">自定义头像</span>
+            <span class="data-value">{{ avatar.custom.length }}</span>
           </div>
-          <div
-            class="info"
-            style="border-top: none"
-          >
-            <span class="label">数据大小</span>
-            <span class="value">{{ customAvatarUsage }}</span>
+          <div class="data-row">
+            <span class="data-label">数据大小</span>
+            <span class="data-value">{{ customAvatarUsage }}</span>
           </div>
         </div>
       </div>
       <template #footer>
         <Btn
-          class="btn"
+          class="reset-btn"
           name="重置数据库"
           @click="reserDatabase"
         />
@@ -213,18 +201,18 @@ const reserDatabase = () => {
 </script>
 
 <style scoped>
-.data {
+.data-manager {
   display: flex;
   flex-direction: column;
   margin: 40px 0 60px;
   width: 1000px;
   gap: 30px;
 }
-.data .box {
+.data-manager .data-section {
   box-sizing: border-box;
   border: 4px solid rgba(0, 0, 0, 0.2);
 }
-.data .info {
+.data-manager .data-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -234,10 +222,10 @@ const reserDatabase = () => {
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
   font-size: 36px;
 }
-.data .info:last-child {
+.data-manager .data-row:last-child {
   border-bottom: none;
 }
-.data .info .label {
+.data-manager .data-label {
   display: flex;
   flex: 0 0 33.33%;
   justify-content: center;
@@ -245,13 +233,13 @@ const reserDatabase = () => {
   height: 100%;
   border-right: 2px solid rgba(0, 0, 0, 0.2);
 }
-.data .info .value {
+.data-manager .data-value {
   flex: 1;
   padding: 0 50px;
   color: #333;
   text-align: center;
 }
-.data .btn-group {
+.data-manager .action-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -260,7 +248,7 @@ const reserDatabase = () => {
   height: 100px;
   border: 2px solid rgba(0, 0, 0, 0);
 }
-.data .btn-group .btn {
+.data-manager .action-list .action-btn {
   display: flex;
   flex: 0 0 calc(33.33% + 1px);
   justify-content: center;
@@ -271,17 +259,16 @@ const reserDatabase = () => {
   color: #333;
   user-select: none;
 }
-.data .btn-group .btn:last-child {
+.data-manager .action-list .action-btn:last-child {
   border-right: none;
 }
-.data .btn-group .btn:hover {
+.data-manager .action-list .action-btn:hover {
   background: #ddd;
 }
-.line {
+.reset-btn {
   width: 100%;
-  height: 30px;
 }
-.disable {
+.action_disabled {
   color: rgba(0, 0, 0, 0.2) !important;
   pointer-events: none;
 }
