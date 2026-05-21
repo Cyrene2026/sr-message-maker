@@ -26,17 +26,14 @@
           <span @click.stop="preview ? undefined : emit('config')">
             {{ item.key === '开拓者' ? setting.name : item.name }}
           </span>
-          <div
+          <IconAction
             v-if="!preview"
             class="del"
+            name="delete"
+            icon-width="30"
+            icon-height="30"
             @click="emit('delete')"
-          >
-            <Icon
-              name="delete"
-              width="30"
-              height="30"
-            />
-          </div>
+          />
         </div>
       </transition>
       <transition
@@ -81,7 +78,7 @@
 import { bubbles } from '@/assets/data/bubbles'
 import { autoPlay } from '@/store/autoPlay'
 import { setting, state } from '@/store/setting'
-import Icon from '../Common/Icon.vue'
+import IconAction from '../Common/IconAction.vue'
 import BubbleText from './BubbleText.vue'
 import { getAvatar, onKeydown } from './Message'
 
@@ -179,21 +176,7 @@ const updateMessage = (e: Event) => {
   position: absolute;
   top: 0;
   right: -100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  opacity: 0;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  user-select: none;
-}
-.message .message-item .name .del :deep(path) {
-  fill: var(--message-item-name-color);
-}
-.message .message-item .name .del:hover {
-  opacity: 1;
+  --icon-action-color: var(--message-item-name-color);
 }
 .message .message-item .loading {
   display: inline-flex;

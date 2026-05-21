@@ -14,6 +14,7 @@
     v-else
     ref="textRef"
     class="text-content"
+    :class="{ 'text-content_copyable': mode === 'copyable' }"
     :contenteditable="mode === 'editable'"
     @input="handleTextInput"
     @keydown="emit('keydown', $event)"
@@ -28,7 +29,7 @@
 const props = withDefaults(
   defineProps<{
     modelValue?: string
-    mode?: 'text' | 'editable' | 'input'
+    mode?: TextContentMode
     placeholder?: string
   }>(),
   {
@@ -75,5 +76,9 @@ defineExpose({ focus, blur })
 .text-content {
   outline: none;
   font: inherit;
+}
+.text-content_copyable {
+  cursor: text;
+  user-select: text;
 }
 </style>

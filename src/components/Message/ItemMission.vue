@@ -54,17 +54,12 @@
             name="arrow"
           />
         </div>
-        <div
+        <IconAction
           v-if="!preview"
-          @click="emit('delete')"
           class="del"
-        >
-          <Icon
-            name="delete"
-            width="35"
-            height="35"
-          />
-        </div>
+          name="delete"
+          @click="emit('delete')"
+        />
       </div>
     </transition>
   </div>
@@ -77,6 +72,7 @@ import image_2 from '@/assets/images/mission/开拓任务.webp'
 import image_4 from '@/assets/images/mission/开拓续闻.webp'
 import image_3 from '@/assets/images/mission/日常任务.webp'
 import { state } from '@/store/setting'
+import IconAction from '../Common/IconAction.vue'
 import TextContent from '../Common/TextContent.vue'
 import Icon from '../Common/Icon.vue'
 import { onKeydown } from './Message'
@@ -204,22 +200,8 @@ const updateText = (text: string) => {
   position: absolute;
   top: 50%;
   right: -100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  opacity: 0;
-  cursor: pointer;
-  transition: opacity 0.2s;
   transform: translateY(-50%);
-  user-select: none;
-}
-.mission .bg .del :deep(path) {
-  fill: var(--message-item-name-color);
-}
-.mission .bg .del:hover {
-  opacity: 1;
+  --icon-action-color: var(--message-item-name-color);
 }
 .mission-0 {
   color: #b886ed;

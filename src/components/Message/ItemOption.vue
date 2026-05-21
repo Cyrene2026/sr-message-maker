@@ -4,23 +4,13 @@
     appear
   >
     <div class="option">
-      <div
-        @click="emit('select')"
+      <IconAction
         class="change"
-      >
-        <Icon
-          v-if="!highlight"
-          name="success"
-          width="50"
-          height="50"
-        />
-        <Icon
-          v-else
-          name="fail"
-          width="50"
-          height="50"
-        />
-      </div>
+        :name="highlight ? 'fail' : 'success'"
+        icon-width="50"
+        icon-height="50"
+        @click="emit('select')"
+      />
       <OptionText
         editable
         :text="text"
@@ -29,23 +19,18 @@
         @blur="updateText(($event.target as HTMLInputElement).value)"
         @keydown="onKeydown"
       />
-      <div
-        @click="emit('delete')"
+      <IconAction
         class="del"
-      >
-        <Icon
-          name="delete"
-          width="35"
-          height="35"
-        />
-      </div>
+        name="delete"
+        @click="emit('delete')"
+      />
     </div>
   </Transition>
 </template>
 
 <script lang="ts" setup>
 import { state } from '@/store/setting'
-import Icon from '../Common/Icon.vue'
+import IconAction from '../Common/IconAction.vue'
 import { onKeydown } from './Message'
 import OptionText from './OptionText.vue'
 
@@ -80,24 +65,8 @@ const updateText = (text: string) => {
 .option .del {
   position: absolute;
   top: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  opacity: 0;
-  cursor: pointer;
-  transition: opacity 0.2s;
   transform: translateY(-50%);
-  user-select: none;
-}
-.option .change :deep(path),
-.option .del :deep(path) {
-  fill: var(--message-item-name-color);
-}
-.option .change:hover,
-.option .del:hover {
-  opacity: 1;
+  --icon-action-color: var(--message-item-name-color);
 }
 .option .change {
   left: 20px;

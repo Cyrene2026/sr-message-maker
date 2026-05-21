@@ -13,16 +13,13 @@
         @blur="preview ? undefined : updateMessage($event)"
       />
       <div v-if="!preview">
-        <div
-          @click="emit('delete')"
+        <IconAction
           class="del"
-        >
-          <Icon
-            name="delete"
-            width="30"
-            height="30"
-          />
-        </div>
+          name="delete"
+          icon-width="30"
+          icon-height="30"
+          @click="emit('delete')"
+        />
       </div>
     </div>
   </Transition>
@@ -30,6 +27,7 @@
 
 <script lang="ts" setup>
 import { state } from '@/store/setting'
+import IconAction from '../Common/IconAction.vue'
 import TextContent from '../Common/TextContent.vue'
 import Icon from '../Common/Icon.vue'
 import { onKeydown } from './Message'
@@ -86,20 +84,6 @@ const updateMessage = (e: Event) => {
 .notice div .del {
   position: absolute;
   right: -100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  opacity: 0;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  user-select: none;
-}
-.notice div .del :deep(path) {
-  fill: var(--notice-color);
-}
-.notice div .del:hover {
-  opacity: 1;
+  --icon-action-color: var(--notice-color);
 }
 </style>
